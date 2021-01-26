@@ -72,7 +72,7 @@ namespace Project.WebApi.Controllers
                 db.Communications.Remove(Com);
                 db.SaveChanges();
             }
-            return new JsonResult("Delete Success!");
+            return new JsonResult("Delete Success!!");
         }
 
     }

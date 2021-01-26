@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Project.WebApi",
+    "\\Project.WebApi\\Migrations",
+    "\\Project.WebApi\\Properties",
+    "\\ProjectAngular",
+    "\\ProjectAngular\\src",
+    "\\ProjectAngular\\src\\app",
+    "\\ProjectAngular\\src\\assets",
+    "\\ProjectAngular\\src\\environments"
+  ],
+  "SelectedNode": "\\ProjectAngular\\src\\app\\app.component.html",
+  "PreviewInSolutionExplorer": false
+}

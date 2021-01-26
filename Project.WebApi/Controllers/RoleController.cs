@@ -27,7 +27,7 @@ namespace Project.WebApi.Controllers
             RoleList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                RoleList = db.Roles.ToList();
+                RoleList = db.Roles.OrderBy(x => x.RoleId).ToList();
             }
 
             return new JsonResult(RoleList);

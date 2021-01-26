@@ -38,14 +38,11 @@ namespace Project.WebApi
 
                 entity.ToTable("communication");
 
-                entity.Property(e => e.CommunicationId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("id");
+                entity.Property(e => e.CommunicationId).HasDefaultValueSql("nextval('communication_id_seq'::regclass)");
 
                 entity.Property(e => e.CommunicationName)
                     .IsRequired()
-                    .HasColumnType("character varying")
-                    .HasColumnName("name");
+                    .HasColumnType("character varying");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -53,13 +50,9 @@ namespace Project.WebApi
 
                 entity.ToTable("role");
 
-                entity.Property(e => e.RoleId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("id");
+                entity.Property(e => e.RoleId).HasDefaultValueSql("nextval('role_id_seq'::regclass)");
 
-                entity.Property(e => e.RoleName)
-                    .HasColumnType("character varying")
-                    .HasColumnName("name");
+                entity.Property(e => e.RoleName).HasColumnType("character varying");
             });
 
             OnModelCreatingPartial(modelBuilder);

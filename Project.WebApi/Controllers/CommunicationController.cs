@@ -25,7 +25,7 @@ namespace Project.WebApi.Controllers
             CommunicationList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                CommunicationList = db.Communications.ToList();
+                CommunicationList = db.Communications.OrderBy(x => x.CommunicationId).ToList();
             }
 
             return new JsonResult(CommunicationList);
@@ -50,9 +50,9 @@ namespace Project.WebApi.Controllers
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
                 CommunicationList = db.Communications.ToList();
-                for(int i = 0; i < CommunicationList.Count; i++)
+                for (int i = 0; i < CommunicationList.Count; i++)
                 {
-                    if(CommunicationList[i].CommunicationId == com.CommunicationId)
+                    if (CommunicationList[i].CommunicationId == com.CommunicationId)
                     {
                         CommunicationList[i].CommunicationName = com.CommunicationName;
                         db.SaveChanges();

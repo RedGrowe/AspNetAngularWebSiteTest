@@ -13,6 +13,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CommunicateComponent } from './communicate/communicate.component';
 import { ShowCommunicateComponent } from './communicate/show-communicate/show-communicate.component';
 import { AddEditCommunicateComponent } from './communicate/add-edit-communicate/add-edit-communicate.component';
+import { SchoolInfoComponent } from './school-info/school-info.component';
+import { ShowSchoolInfoComponent } from './school-info/show-school-info/show-school-info.component';
+import { AddEditSchoolInfoComponent } from './school-info/add-edit-school-info/add-edit-school-info.component';
+import { CourseInfoComponent } from './course-info/course-info.component';
+import { ShowCourseInfoComponent } from './course-info/show-course-info/show-course-info.component';
+import { AddEditCourseInfoComponent } from './course-info/add-edit-course-info/add-edit-course-info.component';
+import { PriceInfoComponent } from './price-info/price-info.component';
+import { ShowPriceInfoComponent } from './price-info/show-price-info/show-price-info.component';
+import { AddEditPriceInfoComponent } from './price-info/add-edit-price-info/add-edit-price-info.component';
+import { VacancyInfoComponent } from './vacancy-info/vacancy-info.component';
+import { ShowVacancyInfoComponent } from './vacancy-info/show-vacancy-info/show-vacancy-info.component';
+import { AddEditVacancyInfoComponent } from './vacancy-info/add-edit-vacancy-info/add-edit-vacancy-info.component';
+import { EditingComponent } from './editing/editing.component';
+import { RequestInfoComponent } from './school-info/request-info/request-info.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +36,21 @@ import { AddEditCommunicateComponent } from './communicate/add-edit-communicate/
     AddEditRoleComponent,
     CommunicateComponent,
     ShowCommunicateComponent,
-    AddEditCommunicateComponent
+    AddEditCommunicateComponent,
+    SchoolInfoComponent,
+    ShowSchoolInfoComponent,
+    AddEditSchoolInfoComponent,
+    CourseInfoComponent,
+    ShowCourseInfoComponent,
+    AddEditCourseInfoComponent,
+    PriceInfoComponent,
+    ShowPriceInfoComponent,
+    AddEditPriceInfoComponent,
+    VacancyInfoComponent,
+    ShowVacancyInfoComponent,
+    AddEditVacancyInfoComponent,
+    EditingComponent,
+    RequestInfoComponent
   ],
   imports: [
     BrowserModule,

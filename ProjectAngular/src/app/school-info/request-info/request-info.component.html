@@ -1,0 +1,33 @@
+<div class="form-Group row">
+  <label class="col-sm-2 col-form-label">Имя</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="Name"
+           placeholder="Введите имя">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Направление подготовки: </label>
+  <div class="col-sm-10">
+    <select>
+      <option *ngFor="let dataItem of CourseList" [ngValue]="CourseName">{{dataItem.Name}}</option>
+    </select>
+  </div>
+
+  <label class="col-sm-2 col-form-label">Контактный телефон:</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="MobilePhone"
+           placeholder="Введите номер телефона">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Способ связи:</label>
+  <div class="col-sm-10">
+    <select>
+      <option *ngFor="let dataItem2 of CommunicationList" [value]="CommunicationName">{{dataItem2.CommunicationName}}</option>
+    </select>
+  </div>
+
+  <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          data-backdrop="static" data-keyboard="false" (click)="SendRequest()">
+    Отправить заявку
+  </button>
+
+</div>

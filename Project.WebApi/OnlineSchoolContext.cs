@@ -18,6 +18,8 @@ namespace Project.WebApi
         }
 
         public virtual DbSet<Communication> Communications { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -35,6 +37,7 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Communication>(entity =>
             {
+                entity.HasNoKey();
 
                 entity.ToTable("communication");
 
@@ -45,8 +48,60 @@ namespace Project.WebApi
                     .HasColumnType("character varying");
             });
 
+            modelBuilder.Entity<Course>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("course");
+
+                entity.Property(e => e.GroupNumber)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("group_number");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<Request>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("request");
+
+                entity.Property(e => e.Communicationname)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("communicationname");
+
+                entity.Property(e => e.Coursename)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("coursename");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Mobilephone)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("mobilephone");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnType("character varying");
+            });
+
             modelBuilder.Entity<Role>(entity =>
             {
+                entity.HasNoKey();
 
                 entity.ToTable("role");
 

@@ -12,7 +12,7 @@ namespace Project.WebApi.Controllers
     public class CommunicationController : ControllerBase
     {
         private readonly ILogger<CommunicationController> _logger;
-        List<Communication> CommunicationList = new List<Communication>();
+        List<Communication> ItemList = new List<Communication>();
 
         public CommunicationController(ILogger<CommunicationController> logger)
         {
@@ -20,41 +20,41 @@ namespace Project.WebApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllCommunication()
+        public JsonResult Get()
         {
-            CommunicationList.Clear();
+            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                CommunicationList = db.Communications.OrderBy(x => x.CommunicationId).ToList();
+                ItemList = db.Communications.OrderBy(x => x.CommunicationId).ToList();
             }
 
-            return new JsonResult(CommunicationList);
+            return new JsonResult(ItemList);
         }
 
         [HttpPost]
-        public JsonResult InsertCommunication(Communication Com)
+        public JsonResult Insert(Communication item)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                Com.CommunicationId = db.Communications.Count() + 1;
-                db.Communications.Add(Com);
+                item.CommunicationId = db.Communications.Count() + 1;
+                db.Communications.Add(item);
                 db.SaveChanges();
             }
             return new JsonResult("Added Success");
         }
 
         [HttpPut]
-        public JsonResult UpdateCommunication(Communication com)
+        public JsonResult Update(Communication item)
         {
-            CommunicationList.Clear();
+            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                CommunicationList = db.Communications.ToList();
-                for (int i = 0; i < CommunicationList.Count; i++)
+                ItemList = db.Communications.ToList();
+                for (int i = 0; i < ItemList.Count; i++)
                 {
-                    if (CommunicationList[i].CommunicationId == com.CommunicationId)
+                    if (ItemList[i].CommunicationId == item.CommunicationId)
                     {
-                        CommunicationList[i].CommunicationName = com.CommunicationName;
+                        ItemList[i].CommunicationName = item.CommunicationName;
                         db.SaveChanges();
                     }
                 }
@@ -65,11 +65,11 @@ namespace Project.WebApi.Controllers
 
 
         [HttpDelete]
-        public JsonResult DeleteCommunication(Communication Com)
+        public JsonResult Delete(Communication item)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                db.Communications.Remove(Com);
+                db.Communications.Remove(item);
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success!!");

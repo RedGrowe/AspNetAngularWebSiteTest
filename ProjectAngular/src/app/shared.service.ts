@@ -26,19 +26,51 @@ readonly APIUrl = 'https://localhost:5001/api';
     return this.http.delete(this.APIUrl + '/Role/' + val);
   }
 
+
+
   getCommunication(): Observable<any>{
-    return this.http.get<any>(this.APIUrl + '/communication');
+    return this.http.get<any>(this.APIUrl + '/Communication');
   }
   updateCommunication(val: any){
-    return this.http.put(this.APIUrl + '/communication', val);
+    return this.http.put(this.APIUrl + '/Communication', val);
   }
 
   addCommunication(val: any){
-    return this.http.post(this.APIUrl + '/communication', val);
+    return this.http.post(this.APIUrl + '/Communication', val);
   }
   deleteCommunication(val: any){
-    return this.http.delete(this.APIUrl + '/communication/' + val);
+    return this.http.delete(this.APIUrl + '/Communication/' + val);
   }
 
+
+  getCourse(): Observable<any>{
+    return this.http.get<any>(this.APIUrl + '/Course');
+  }
+  updateCourse(val: any){
+    return this.http.put(this.APIUrl + '/Course', val);
+  }
+
+  addCourse(val: any){
+    return this.http.post(this.APIUrl + '/Course', val);
+  }
+  deleteCCourse(val: any){
+    return this.http.delete(this.APIUrl + '/Course/' + val);
+  }
+
+
+
+  getRequest(): Observable<any>{
+    return this.http.get<any>(this.APIUrl + '/Request');
+  }
+  updateRequest(val: any){
+    return this.http.put(this.APIUrl + '/Request', val);
+  }
+
+  addRequest(val: any){
+    return this.http.post(this.APIUrl + '/Request', val);
+  }
+  deleteRequest(val: any){
+    return this.http.delete(this.APIUrl + '/Request/' + val);
+  }
 
 }

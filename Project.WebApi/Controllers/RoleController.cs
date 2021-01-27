@@ -14,7 +14,7 @@ namespace Project.WebApi.Controllers
     public class RoleController : ControllerBase
     {
         private readonly ILogger<RoleController> _logger;
-        List<Role> RoleList = new List<Role>();
+        List<Role> ItemList = new List<Role>();
 
         public RoleController(ILogger<RoleController> logger)
         {
@@ -22,41 +22,41 @@ namespace Project.WebApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllRole()
+        public JsonResult Get()
         {
-            RoleList.Clear();
+            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                RoleList = db.Roles.OrderBy(x => x.RoleId).ToList();
+                ItemList = db.Roles.OrderBy(x => x.RoleId).ToList();
             }
 
-            return new JsonResult(RoleList);
+            return new JsonResult(ItemList);
         }
 
         [HttpPost]
-        public JsonResult InsertRole(Role newRole)
+        public JsonResult Insert(Role item)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                newRole.RoleId = db.Roles.Count() + 1;
-                db.Roles.Add(newRole);
+                item.RoleId = db.Roles.Count() + 1;
+                db.Roles.Add(item);
                 db.SaveChanges();
             }
             return new JsonResult("Added Success");
         }
 
         [HttpPut]
-        public JsonResult UpdateRole(Role role)
+        public JsonResult Update(Role item)
         {
-            RoleList.Clear();
+            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                RoleList = db.Roles.ToList();
-                for (int i = 0; i < RoleList.Count; i++)
+                ItemList = db.Roles.ToList();
+                for (int i = 0; i < ItemList.Count; i++)
                 {
-                    if (RoleList[i].RoleId == role.RoleId)
+                    if (ItemList[i].RoleId == item.RoleId)
                     {
-                        RoleList[i].RoleName = role.RoleName;
+                        ItemList[i].RoleName = item.RoleName;
                         db.SaveChanges();
                     }
                 }
@@ -66,11 +66,11 @@ namespace Project.WebApi.Controllers
         }
 
         [HttpDelete]
-        public JsonResult DeleteRole(Role role)
+        public JsonResult Delete(Role item)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                db.Roles.Remove(role);
+                db.Roles.Remove(item);
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success");

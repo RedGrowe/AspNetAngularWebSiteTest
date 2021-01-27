@@ -40,7 +40,7 @@ namespace Project.WebApi.Controllers
                 db.Requests.Add(item);
                 db.SaveChanges();
             }
-            return new JsonResult("Added Success");
+            return new JsonResult("Added Success!");
         }
 
         [HttpPut]

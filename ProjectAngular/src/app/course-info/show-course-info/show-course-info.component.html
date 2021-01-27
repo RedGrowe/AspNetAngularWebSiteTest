@@ -1,1 +1,15 @@
-<p>show-course-info works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Направления</th>
+    <th>Количество учеников в группе</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dataItem of CourseList">
+    <td>{{dataItem.Name}}</td>
+    <td>{{dataItem.GroupNumber}}</td>
+  </tr>
+  </tbody>
+</table>

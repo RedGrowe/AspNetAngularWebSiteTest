@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SharedService} from '../../shared.service';
+
 
 @Component({
   selector: 'app-show-course-info',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowCourseInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: SharedService) { }
+
+  CourseList: any = [];
+
 
   ngOnInit(): void {
+    this.refreshCourseList();
+  }
+
+  refreshCourseList(){
+    this.service.getCourse().subscribe(data => {
+      this.CourseList = data;
+    });
   }
 
 }

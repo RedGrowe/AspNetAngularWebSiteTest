@@ -27,6 +27,7 @@ import { ShowVacancyInfoComponent } from './vacancy-info/show-vacancy-info/show-
 import { AddEditVacancyInfoComponent } from './vacancy-info/add-edit-vacancy-info/add-edit-vacancy-info.component';
 import { EditingComponent } from './editing/editing.component';
 import { RequestInfoComponent } from './school-info/request-info/request-info.component';
+import { ShowEditingComponent } from './editing/show-editing/show-editing.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RequestInfoComponent } from './school-info/request-info/request-info.co
     ShowVacancyInfoComponent,
     AddEditVacancyInfoComponent,
     EditingComponent,
-    RequestInfoComponent
+    RequestInfoComponent,
+    ShowEditingComponent
   ],
   imports: [
     BrowserModule,

@@ -37,8 +37,6 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Communication>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("communication");
 
                 entity.Property(e => e.CommunicationId).HasDefaultValueSql("nextval('communication_id_seq'::regclass)");
@@ -50,8 +48,6 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Course>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("course");
 
                 entity.Property(e => e.GroupNumber)
@@ -71,8 +67,6 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Request>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("request");
 
                 entity.Property(e => e.Communicationname)
@@ -101,8 +95,6 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Role>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("role");
 
                 entity.Property(e => e.RoleId).HasDefaultValueSql("nextval('role_id_seq'::regclass)");

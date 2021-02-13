@@ -10,13 +10,13 @@ export class AddEditCommunicateComponent implements OnInit {
 
   constructor(private service: SharedService) { }
 
-  @Input() com: any;
+  @Input() communicate: any;
   CommunicationId!: string;
   CommunicationName!: string;
 
   ngOnInit(): void {
-    this.CommunicationId = this.com.CommunicationId;
-    this.CommunicationName = this.com.CommunicationName;
+    this.CommunicationId = this.communicate.CommunicationId;
+    this.CommunicationName = this.communicate.CommunicationName;
   }
 
   addCommunication(){

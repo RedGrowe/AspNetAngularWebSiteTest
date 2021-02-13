@@ -60,7 +60,7 @@ namespace Project.WebApi.Controllers
                 }
             }
 
-            return new JsonResult("Update Success");
+            return new JsonResult("Update Success2");
         }
 
 

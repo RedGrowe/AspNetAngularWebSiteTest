@@ -10,6 +10,7 @@ import {SchoolInfoComponent} from './school-info/school-info.component';
 import {CourseInfoComponent} from './course-info/course-info.component';
 import {PriceInfoComponent} from './price-info/price-info.component';
 import {VacancyInfoComponent} from './vacancy-info/vacancy-info.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {path: 'role', component: RoleComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'price', component: PriceInfoComponent},
   {path: 'vacancy', component: VacancyInfoComponent},
   {path: 'edit', component: EditingComponent},
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

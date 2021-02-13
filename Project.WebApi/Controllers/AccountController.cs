@@ -9,52 +9,54 @@ namespace Project.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CourseController : Controller
+    public class AccountController : Controller
     {
-        private readonly ILogger<CourseController> _logger;
-        List<Course> ItemList = new List<Course>();
+        private readonly ILogger<Account> _logger;
+        List<Account> ItemList = new List<Account>();
 
-        public CourseController(ILogger<CourseController> logger)
+
+        public AccountController(ILogger<Account> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet]
-        public JsonResult Get()
+        [HttpPost]
+        [Route("login")]
+        public JsonResult Login(Account item)
         {
-            ItemList.Clear();
+            Account Item = new Account();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Courses.OrderBy(x => x.Id).ToList();
+                Item = db.Accounts.Where(x => x.Username == item.Username && x.Password == item.Password).FirstOrDefault();
             }
 
-            return new JsonResult(ItemList);
+            return new JsonResult(Item);
         }
 
         [HttpPost]
-        public JsonResult Insert(Course item)
+        public JsonResult Insert(Account item)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                item.Id = db.Courses.Count() + 1;
-                db.Courses.Add(item);
+                item.Id = db.Accounts.Count() + 1;
+                db.Accounts.Add(item);
                 db.SaveChanges();
             }
             return new JsonResult("Added Success");
         }
 
         [HttpPut]
-        public JsonResult Update(Course item)
+        public JsonResult Update(Account item)
         {
             ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Courses.ToList();
+                ItemList = db.Accounts.ToList();
                 for (int i = 0; i < ItemList.Count; i++)
                 {
                     if (ItemList[i].Id == item.Id)
                     {
-                        ItemList[i].Name = item.Name;
+                        ItemList[i].Username = item.Username;
                         db.SaveChanges();
                     }
                 }
@@ -64,13 +66,12 @@ namespace Project.WebApi.Controllers
         }
 
 
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        [HttpDelete]
+        public JsonResult Delete(Account item)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Courses.ToList();
-                db.Remove(ItemList.FirstOrDefault(x => x.Id == id));
+                db.Accounts.Remove(item);
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success!!");

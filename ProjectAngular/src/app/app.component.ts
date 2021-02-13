@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SharedService} from './shared.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ProjectAngular';
+  constructor(private service: SharedService) {
+  }
+
+  reg(): boolean {
+    return this.service.registr;
+  }
 }

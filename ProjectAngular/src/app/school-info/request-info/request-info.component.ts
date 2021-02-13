@@ -18,6 +18,7 @@ export class RequestInfoComponent implements OnInit {
   CourseName!: any;
   CommunicationName!: any;
   MobilePhone!: any;
+  Email!: any;
 
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class RequestInfoComponent implements OnInit {
   SendRequest(){
     var val = {
       Id: this.Id, Name: this.Name, CourseName: this.CourseName,
-      MobilePhone: this.MobilePhone, CommunicationName: this.CommunicationName};
+      MobilePhone: this.MobilePhone, CommunicationName: this.CommunicationName, Email: this.Email};
 
     this.service.addRequest(val).subscribe(res => {
       alert(res.toString());

@@ -17,6 +17,7 @@ namespace Project.WebApi
         {
         }
 
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Communication> Communications { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Request> Requests { get; set; }
@@ -35,8 +36,40 @@ namespace Project.WebApi
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Russian_Russia.1251");
 
+            modelBuilder.Entity<Account>(entity =>
+            {
+
+                entity.ToTable("account");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Firstname)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("firstname");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Lastname)
+                    .HasColumnType("character varying")
+                    .HasColumnName("lastname");
+
+                entity.Property(e => e.Password)
+                    .HasColumnType("character varying")
+                    .HasColumnName("password");
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasColumnType("character varying")
+                    .HasColumnName("username");
+            });
+
             modelBuilder.Entity<Communication>(entity =>
             {
+
                 entity.ToTable("communication");
 
                 entity.Property(e => e.CommunicationId).HasDefaultValueSql("nextval('communication_id_seq'::regclass)");
@@ -48,6 +81,7 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Course>(entity =>
             {
+
                 entity.ToTable("course");
 
                 entity.Property(e => e.GroupNumber)
@@ -67,6 +101,7 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Request>(entity =>
             {
+
                 entity.ToTable("request");
 
                 entity.Property(e => e.Communicationname)
@@ -95,6 +130,7 @@ namespace Project.WebApi
 
             modelBuilder.Entity<Role>(entity =>
             {
+
                 entity.ToTable("role");
 
                 entity.Property(e => e.RoleId).HasDefaultValueSql("nextval('role_id_seq'::regclass)");

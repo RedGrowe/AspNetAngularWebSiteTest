@@ -1,34 +1,81 @@
-<div class="form-Group row">
-  <h3>Оставить заявку на обучение</h3>
-  <label class="col-sm-2 col-form-label">Имя</label>
-  <div class="col-sm-10">
-    <input type="text" classs="form-control" [(ngModel)]="Name"
-           placeholder="Введите имя">
+<!--
+<div class="container">
+  <div class="form-Group row">
+    <h3>Оставить заявку на обучение</h3>
+    <label class="col-sm-2 col-form-label">Имя</label>
+    <div class="col-sm-10">
+      <input type="text" classs="form-control" [(ngModel)]="Name"
+             placeholder="Введите имя">
+    </div>
+
+    <label class="col-sm-2 col-form-label ">Направление подготовки: </label>
+    <div class="col-sm-10">
+      <select [(ngModel)]="CourseName">
+        <option *ngFor="let dataItem of CourseList">{{dataItem.Name}}</option>
+      </select>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Контактный телефон:</label>
+    <div class="col-sm-10">
+      <input type="text" classs="form-control" [(ngModel)]="MobilePhone"
+             placeholder="Введите номер телефона">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Способ связи:</label>
+    <div class="col-sm-10">
+      <select  [(ngModel)]="CommunicationName">
+        <option *ngFor="let dataItem2 of CommunicationList">{{dataItem2.CommunicationName}}</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-backdrop="static" data-keyboard="false" (click)="SendRequest()">
+      Отправить заявку
+    </button>
+
   </div>
-
-  <label class="col-sm-2 col-form-label">Направление подготовки: </label>
-  <div class="col-sm-10">
-    <select [(ngModel)]="CourseName">
-      <option *ngFor="let dataItem of CourseList">{{dataItem.Name}}</option>
-    </select>
+</div>
+-->
+<div class="container">
+  <div class="row">
+    <div class="col">
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
   </div>
-
-  <label class="col-sm-2 col-form-label">Контактный телефон:</label>
-  <div class="col-sm-10">
-    <input type="text" classs="form-control" [(ngModel)]="MobilePhone"
-           placeholder="Введите номер телефона">
+  <div class="row">
+    <h3>Оставить заявку на обучение</h3>
   </div>
+</div>
 
-  <label class="col-sm-2 col-form-label">Способ связи:</label>
-  <div class="col-sm-10">
-    <select  [(ngModel)]="CommunicationName">
-      <option *ngFor="let dataItem2 of CommunicationList">{{dataItem2.CommunicationName}}</option>
-    </select>
-  </div>
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Имя</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="Name">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail2" class="form-label">Почтовый адрес</label>
+      <input type="text" class="form-control" id="exampleInputEmail2" [(ngModel)]="Email">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail3" class="form-label">Номер телефона</label>
+      <input type="text" class="form-control" id="exampleInputEmail3" [(ngModel)]="MobilePhone">
+    </div>
 
-  <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          data-backdrop="static" data-keyboard="false" (click)="SendRequest()">
-    Отправить заявку
-  </button>
+    <div class="mb-3">
+      <label> Направление подготовки</label>
+      <select class="form-select" aria-label="Default select example"  [(ngModel)]="CourseName">
+        <option *ngFor="let dataItem of CourseList">{{dataItem.Name}}</option>
+      </select>
+    </div>
 
+    <div class="mb-3">
+      <label> Выберите удобный для вас способ связи </label>
+      <select class="form-select" aria-label="Default select example"  [(ngModel)]="CommunicationName">
+        <option *ngFor="let dataItem2 of CommunicationList">{{dataItem2.CommunicationName}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-outline-secondary" (click)="SendRequest()">Отправить заявку</button>
+  </form>
 </div>

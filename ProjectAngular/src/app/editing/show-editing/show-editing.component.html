@@ -1,4 +1,12 @@
-<table class="table table-striped">
+<h2>Редактирование способов связи</h2>
+
+<button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        (click)="addCommunicateClick()"
+        data-backdrop="static" data-keyboard="false">
+  Добавить новый способ связи
+</button>
+
+<table class="table table-bordered">
   <thead>
   <tr>
     <th>Способ связи</th>
@@ -9,41 +17,31 @@
   <tr *ngFor="let dataItem of CommunicationList">
     <td>{{dataItem.CommunicationName}}</td>
     <td>
-      <<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-               (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">
-      Edit
+      <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="editCommunicateClick(dataItem)"
+                data-backdrop="static" data-keyboard="false">
+      Редактировать
     </button>
-      <button type="button" class="btn btn-light mr-1">
-        Delete
-      </button>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Роль</th>
-    <th>Опции</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let dataItem of RoleList">
-    <td>{{dataItem.RoleName}}</td>
-    <td>
-      <<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-               (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">
-      Edit
-    </button>
-      <button type="button" class="btn btn-light mr-1">
-        Delete
+      <button type="button" class="btn btn-outline-secondary" (click)="deleteCommunicate(dataItem)">
+        Удалить
       </button>
     </td>
   </tr>
   </tbody>
 </table>
 
-<table class="table table-striped">
+
+
+
+<h2>Редактирование направлений</h2>
+
+<button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+        (click)="addCourseClick()"
+        data-backdrop="static" data-keyboard="false">
+  Добавить новое направление
+</button>
+
+<table class="table table-bordered">
   <thead>
   <tr>
     <th>Направление</th>
@@ -56,14 +54,52 @@
     <td>{{dataItem.Name}}</td>
     <td>{{dataItem.GroupNumber}}</td>
     <td>
-      <<button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-               (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">
-      Edit
+      <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+              (click)="editCourseClick(dataItem)"
+                data-backdrop="static" data-keyboard="false">
+      Редактировать
     </button>
-      <button type="button" class="btn btn-light mr-1">
-        Delete
+      <button type="button" class="btn btn-outline-secondary mr-1" (click)="deleteCourse(dataItem)">
+        Удалить
       </button>
     </td>
   </tr>
   </tbody>
 </table>
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                (click)="closeCommunicateClick()"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-communicate [communicate]="communicate" *ngIf="ActivateAddEditCommunicateComp" ></app-add-edit-communicate>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                (click)="closeCourseClick()"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-course-info [course]="course" *ngIf="ActivateAddEditCourseComp" ></app-add-edit-course-info>
+      </div>
+    </div>
+  </div>
+</div>
+

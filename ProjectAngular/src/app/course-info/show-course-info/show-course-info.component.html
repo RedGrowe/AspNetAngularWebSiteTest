@@ -1,15 +1,17 @@
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Направления</th>
-    <th>Количество учеников в группе</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let dataItem of CourseList">
-    <td>{{dataItem.Name}}</td>
-    <td>{{dataItem.GroupNumber}}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="container-xxl">
+  <table class="table table-bordered align-middle">
+    <thead>
+    <tr>
+      <th>Направления</th>
+      <th>Количество учеников в группе</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dataItem of CourseList">
+      <td>{{dataItem.Name}}</td>
+      <td>{{dataItem.GroupNumber}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

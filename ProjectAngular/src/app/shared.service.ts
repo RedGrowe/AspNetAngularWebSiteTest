@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {User} from './models/model.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 readonly APIUrl = 'https://localhost:5001/api';
+  public registr = false;
 
   constructor(private http: HttpClient) { }
 
@@ -53,7 +55,7 @@ readonly APIUrl = 'https://localhost:5001/api';
   addCourse(val: any){
     return this.http.post(this.APIUrl + '/Course', val);
   }
-  deleteCCourse(val: any){
+  deleteCourse(val: any){
     return this.http.delete(this.APIUrl + '/Course/' + val);
   }
 
@@ -71,6 +73,9 @@ readonly APIUrl = 'https://localhost:5001/api';
   }
   deleteRequest(val: any){
     return this.http.delete(this.APIUrl + '/Request/' + val);
+  }
+  getAccount(val: any): Observable<any>{
+    return this.http.post<any>(this.APIUrl + '/Account/login', val);
   }
 
 }

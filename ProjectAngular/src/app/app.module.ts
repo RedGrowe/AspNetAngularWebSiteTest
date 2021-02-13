@@ -28,6 +28,9 @@ import { AddEditVacancyInfoComponent } from './vacancy-info/add-edit-vacancy-inf
 import { EditingComponent } from './editing/editing.component';
 import { RequestInfoComponent } from './school-info/request-info/request-info.component';
 import { ShowEditingComponent } from './editing/show-editing/show-editing.component';
+import { AccountComponent } from './account/account.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ShowProfileComponent } from './profile/show-profile/show-profile.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { ShowEditingComponent } from './editing/show-editing/show-editing.compon
     AddEditVacancyInfoComponent,
     EditingComponent,
     RequestInfoComponent,
-    ShowEditingComponent
+    ShowEditingComponent,
+    AccountComponent,
+    ProfileComponent,
+    ShowProfileComponent
   ],
   imports: [
     BrowserModule,

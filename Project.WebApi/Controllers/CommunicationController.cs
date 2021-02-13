@@ -59,17 +59,18 @@ namespace Project.WebApi.Controllers
                     }
                 }
             }
-
             return new JsonResult("Update Success");
         }
 
 
-        [HttpDelete]
-        public JsonResult Delete(Communication item)
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
         {
+            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                db.Communications.Remove(item);
+                ItemList = db.Communications.ToList();
+                db.Communications.Remove(ItemList.FirstOrDefault(x => x.CommunicationId == id));
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success!!");

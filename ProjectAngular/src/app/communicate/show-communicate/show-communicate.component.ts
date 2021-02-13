@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SharedService} from '../../shared.service';
+
 
 @Component({
   selector: 'app-show-communicate',
@@ -8,43 +8,8 @@ import {SharedService} from '../../shared.service';
 })
 export class ShowCommunicateComponent implements OnInit {
 
-  constructor(private service: SharedService) { }
-
-  CommunicateList: any = [];
-
-  ModalTitle!: string;
-  ActivateAddEditComComp: boolean = false;
-  com: any;
+  constructor() { }
 
   ngOnInit(): void {
-    this.refreshCommunicateList();
-  }
-
-
-  addClick(){
-    this.com = {
-      CommunicationId: 0,
-      CommunicationName: ''
-    };
-    this.ModalTitle = 'Add New Role';
-    this.ActivateAddEditComComp = true;
-  }
-
-  closeClick(){
-    this.ActivateAddEditComComp = false;
-    this.refreshCommunicateList();
-  }
-
-
-  editClick(item: any){
-    this.com = item;
-    this.ModalTitle = 'Edit Role';
-    this.ActivateAddEditComComp = true;
-  }
-
-  refreshCommunicateList(){
-    this.service.getCommunication().subscribe(data => {
-      this.CommunicateList = data;
-    });
   }
 }

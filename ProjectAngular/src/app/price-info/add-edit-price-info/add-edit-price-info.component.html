@@ -1,1 +1,68 @@
-<p>add-edit-price-info works!</p>
+<div class="form-Group row">
+  <label class="col-sm-2 col-form-label">Направление</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="Course"
+           placeholder="Введите направление">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Предмет</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="Subjetct"
+           placeholder="Введите предмет">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Первая стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="FirstPrice"
+           placeholder="Введите стоимость">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Вторая стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="SecondPrice"
+           placeholder="Введите стоимость">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Третья стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="ThirdPrice"
+           placeholder="Введите стоимость">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Четвертая стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="FourthPrice"
+           placeholder="Введите стоимость">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Пятая стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="FifthPrice"
+           placeholder="Введите стоимость">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Шестая стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="SixthPrice"
+           placeholder="Введите стоимость">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Седьмая стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="SeventhPrice"
+           placeholder="Введите стоимость">
+  </div>
+
+  <label class="col-sm-2 col-form-label">Восьмая стоимость</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="EighthPrice"
+           placeholder="Введите стоимость">
+  </div>
+</div>
+
+<button (click)="addPrice()" *ngIf="price.Id == undefined" class="btn btn-primary">
+  Добавить
+</button>
+<button (click)="updatePrice()" *ngIf="price.Id != undefined" class="btn btn-primary">
+  Обновить
+</button>

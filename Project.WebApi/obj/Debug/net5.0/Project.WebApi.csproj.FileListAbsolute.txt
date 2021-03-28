@@ -100,3 +100,6 @@ C:\Users\queer\source\repos\Project4\Project.WebApi\obj\Debug\net5.0\Project.Web
 C:\Users\queer\source\repos\Project4\Project.WebApi\obj\Debug\net5.0\ref\Project.WebApi.dll
 C:\Users\queer\source\repos\Project4\Project.WebApi\obj\Debug\net5.0\Project.WebApi.pdb
 C:\Users\queer\source\repos\Project4\Project.WebApi\obj\Debug\net5.0\Project.WebApi.genruntimeconfig.cache
+E:\TestProject\Project\Project.WebApi\bin\Debug\net5.0\MailKit.dll
+E:\TestProject\Project\Project.WebApi\bin\Debug\net5.0\MimeKit.dll
+E:\TestProject\Project\Project.WebApi\bin\Debug\net5.0\BouncyCastle.Crypto.dll

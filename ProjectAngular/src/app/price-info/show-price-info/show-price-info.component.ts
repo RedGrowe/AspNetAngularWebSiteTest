@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SharedService} from '../../shared.service';
 
 @Component({
   selector: 'app-show-price-info',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowPriceInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: SharedService) { }
+
+  PriceList: any = [];
 
   ngOnInit(): void {
+this.refreshCourseList();
   }
 
+  refreshCourseList(){
+    this.service.getPrice().subscribe(data => {
+      this.PriceList = data;
+    });
+  }
 }

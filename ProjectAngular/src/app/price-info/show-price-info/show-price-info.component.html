@@ -1,1 +1,43 @@
-<p>show-price-info works!</p>
+<div>
+  <table class="table table-bordered align-middle">
+    <thead>
+    <tr>
+      <th rowspan="2" colspan="2">Цены</th>
+      <td colspan="4">Стоимость 4-х занятий*</td>
+      <td colspan="4">Стоимость 8 занятий*</td>
+    </tr>
+    <tr>
+      <td colspan="4">Группы</td>
+      <td colspan="4">Группы</td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dataItem of PriceList">
+      <td>{{dataItem.Course}}</td>
+      <td>{{dataItem.Subjetct}}</td>
+      <td>{{dataItem.FirstPrice}}</td>
+      <td>{{dataItem.SecondPrice}}</td>
+      <td>{{dataItem.ThirdPrice}}</td>
+      <td>{{dataItem.FourthPrice}}</td>
+      <td>{{dataItem.FifthPrice}}</td>
+      <td>{{dataItem.SixthPrice}}</td>
+      <td>{{dataItem.SeventhPrice}}</td>
+      <td>{{dataItem.EighthPrice}}</td>
+    </tr>
+    </tbody>
+
+
+  </table>
+</div>
+

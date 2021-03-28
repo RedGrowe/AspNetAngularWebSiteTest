@@ -1,105 +1,385 @@
-<h2>Редактирование способов связи</h2>
+<div>
+  <ng-container *ngIf="getUserRole('admin')">
 
-<button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-        (click)="addCommunicateClick()"
-        data-backdrop="static" data-keyboard="false">
-  Добавить новый способ связи
-</button>
 
-<table class="table table-bordered">
-  <thead>
-  <tr>
-    <th>Способ связи</th>
-    <th>Опции</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let dataItem of CommunicationList">
-    <td>{{dataItem.CommunicationName}}</td>
-    <td>
-      <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-              (click)="editCommunicateClick(dataItem)"
-                data-backdrop="static" data-keyboard="false">
-      Редактировать
+    <h3>Редактирование информации о школе</h3>
+    <h4>О школе</h4>
+    <textarea class="form-control" aria-label="With textarea"  [(ngModel)]="SchoolAbout"></textarea>
+    <h4>Контакты</h4>
+    <textarea class="form-control" aria-label="With textarea"  [(ngModel)]="ContactAbout"></textarea>
+    <button class="btn btn-outline-secondary my-3" type="button" (click)="editSchoolAbout()" >Save</button>
+
+
+    <!--СПОСОБЫ СВЯЗИ-->
+
+    <h3>Редактирование способов связи</h3>
+
+    <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="addCommunicateClick()"
+            data-backdrop="static" data-keyboard="false">
+      Добавить новый способ связи
     </button>
-      <button type="button" class="btn btn-outline-secondary" (click)="deleteCommunicate(dataItem)">
-        Удалить
-      </button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Способ связи</th>
+        <th>Опции</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataItem of CommunicationList">
+        <td>{{dataItem.CommunicationName}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="editCommunicateClick(dataItem)"
+                  data-backdrop="static" data-keyboard="false">
+            Редактировать
+          </button>
+          <button type="button" class="btn btn-outline-secondary" (click)="deleteCommunicateClick(dataItem)">
+            Удалить
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
 
+    <!--ЦЕНЫ-->
 
 
-<h2>Редактирование направлений</h2>
+    <h3>Редактирование стоимостей</h3>
 
-<button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"
-        (click)="addCourseClick()"
-        data-backdrop="static" data-keyboard="false">
-  Добавить новое направление
-</button>
-
-<table class="table table-bordered">
-  <thead>
-  <tr>
-    <th>Направление</th>
-    <th>Количество человек в группе</th>
-    <th>Опции</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let dataItem of CourseList">
-    <td>{{dataItem.Name}}</td>
-    <td>{{dataItem.GroupNumber}}</td>
-    <td>
-      <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"
-              (click)="editCourseClick(dataItem)"
-                data-backdrop="static" data-keyboard="false">
-      Редактировать
+    <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal4"
+            (click)="addPrice()"
+            data-backdrop="static" data-keyboard="false">
+      Добавить новую стоимость
     </button>
-      <button type="button" class="btn btn-outline-secondary mr-1" (click)="deleteCourse(dataItem)">
-        Удалить
-      </button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Направление</th>
+        <th>Предмет</th>
+        <th>Первая стоимость</th>
+        <th>Вторая стоимость</th>
+        <th>Третья стоимость</th>
+        <th>Четвертая стоимость</th>
+        <th>Пятая стоимость</th>
+        <th>Шестая стоимость</th>
+        <th>Седьмая стоимость</th>
+        <th>Восьмая стоимость</th>
+        <th>Опции</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataItem of PriceList">
+        <td>{{dataItem.Course}}</td>
+        <td>{{dataItem.Subjetct}}</td>
+        <td>{{dataItem.FirstPrice}}</td>
+        <td>{{dataItem.SecondPrice}}</td>
+        <td>{{dataItem.ThirdPrice}}</td>
+        <td>{{dataItem.FourthPrice}}</td>
+        <td>{{dataItem.FifthPrice}}</td>
+        <td>{{dataItem.SixthPrice}}</td>
+        <td>{{dataItem.SeventhPrice}}</td>
+        <td>{{dataItem.EighthPrice}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal4"
+                  (click)="editPriceClick(dataItem)"
+                  data-backdrop="static" data-keyboard="false">
+            Редактировать
+          </button>
+          <button type="button" class="btn btn-outline-secondary" (click)="deletePriceClick(dataItem)">
+            Удалить
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
 
+    <!--НАПРАВЛЕНИЯ-->
+
+    <h3>Редактирование направлений</h3>
+
+    <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+            (click)="addCourseClick()"
+            data-backdrop="static" data-keyboard="false">
+      Добавить новое направление
+    </button>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Направление</th>
+        <th>Количество человек в группе</th>
+        <th>Опции</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataItem of CourseList">
+        <td>{{dataItem.Name}}</td>
+        <td>{{dataItem.GroupNumber}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                  (click)="editCourseClick(dataItem)"
+                  data-backdrop="static" data-keyboard="false">
+            Редактировать
+          </button>
+          <button type="button" class="btn btn-outline-secondary mr-1" (click)="deleteCourseClick(dataItem)">
+            Удалить
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!--ВАКАНСИИ-->
+
+    <h3>Редактирование вакансий</h3>
+
+    <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+            (click)="addVacancyClick()"
+            data-backdrop="static" data-keyboard="false">
+      Добавить новой вакансии
+    </button>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Вакансия</th>
+        <th>Опции</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataItem of VacancyList">
+        <td>{{dataItem.VacancyName}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal2"
+                  (click)="editVacancyClick(dataItem)"
+                  data-backdrop="static" data-keyboard="false">
+            Редактировать
+          </button>
+          <button type="button" class="btn btn-outline-secondary mr-1" (click)="deleteVacancyClick(dataItem)">
+            Удалить
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
 
+    <!--ЗАЯВКИ-->
+    <h3>Редактирование заявок от учеников</h3>
 
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Направление</th>
+        <th>Почтовый адрес</th>
+        <th>Мобильный номер</th>
+        <th>Способ связи</th>
+        <th>Опции</th>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                (click)="closeCommunicateClick()"></button>
-      </div>
-      <div class="modal-body">
-        <app-add-edit-communicate [communicate]="communicate" *ngIf="ActivateAddEditCommunicateComp" ></app-add-edit-communicate>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataItem of RequestList">
+        <td>{{dataItem.Name}}</td>
+        <td>{{dataItem.Coursename}}</td>
+        <td>{{dataItem.Email}}</td>
+        <td>{{dataItem.Mobilephone}}</td>
+        <td>{{dataItem.Communicationname}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary mr-1" (click)="sendPaymentCode(dataItem)">
+            Отправить код для оплаты
+          </button>
+          <button type="button" class="btn btn-outline-secondary mr-1" (click)="deleteRequest(dataItem)">
+            Удалить
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+<!--ПОЛЬЗОВАТЕЛИ-->
+
+    <h3>Редактирование пользователей</h3>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Опции</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataItem of AccountList">
+        <td>{{dataItem.Firstname}}</td>
+        <td>{{dataItem.Lastname}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal3"
+                  (click)="editUserClick(dataItem)"
+                  data-backdrop="static" data-keyboard="false">
+            Редактировать
+          </button>
+          <button type="button" class="btn btn-outline-secondary mr-1" >
+            Удалить
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!--ЗАЯВКИ НА ВАКАНСИИ-->
+    <!--ЗАЯВКИ-->
+    <h3>Редактирование заявок на вакансии</h3>
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Направление</th>
+        <th>Почтовый адрес</th>
+        <th>Мобильный номер</th>
+        <th>Способ связи</th>
+        <th>Опции</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataItem of RequestVacancyList">
+        <td>{{dataItem.Name}}</td>
+        <td>{{dataItem.Vacancy}}</td>
+        <td>{{dataItem.Email}}</td>
+        <td>{{dataItem.Mobile}}</td>
+        <td>{{dataItem.Communication}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-secondary mr-1" (click)="confirmRequestVacancy(dataItem)">
+            Подтвердить
+          </button>
+          <button type="button" class="btn btn-outline-secondary mr-1" (click)="deleteRequestVacancy(dataItem)">
+            Удалить
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+<!--МОДАЛЬНЫЕ ОКНА-->
+
+    <!--СПОСОБЫ СВЯЗИ-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeCommunicateClick()"></button>
+          </div>
+          <div class="modal-body">
+            <app-add-edit-communicate [communicate]="communicate" *ngIf="ActivateAddEditCommunicateComp" ></app-add-edit-communicate>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
 
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel1">{{ModalTitle}}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                (click)="closeCourseClick()"></button>
-      </div>
-      <div class="modal-body">
-        <app-add-edit-course-info [course]="course" *ngIf="ActivateAddEditCourseComp" ></app-add-edit-course-info>
+
+<!-- НАПРАВЛЕНИЯ-->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">{{ModalTitle}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeCourseClick()"></button>
+          </div>
+          <div class="modal-body">
+            <app-add-edit-course-info [course]="course" *ngIf="ActivateAddEditCourseComp" ></app-add-edit-course-info>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
+    <!--ВАКАНСИИ-->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel2">{{ModalTitle}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeVacancyClick()"></button>
+          </div>
+          <div class="modal-body">
+            <app-add-edit-vacancy-info [vacancy]="vacancy" *ngIf="ActivateAddEditVacancyComp" ></app-add-edit-vacancy-info>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--ЦЕНЫ-->
+    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel4">{{ModalTitle}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closePriceClick()"></button>
+          </div>
+          <div class="modal-body">
+            <app-add-edit-price-info [price]="price" *ngIf="ActivateAddEditPriceComp" ></app-add-edit-price-info>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--ПОЛЬЗОВАТЕЛЬ-->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel3">{{ModalTitle}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeUserClick()"></button>
+          </div>
+          <div class="modal-body">
+            <app-add-edit-profile [user]="user" *ngIf="ActivateAddEditProfileComp" ></app-add-edit-profile>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+
+  <ng-container *ngIf="getUserRole('teacher')">
+    <div class="container">
+      <h4>Фотография профиля</h4>
+      <img [src]="PhotoFilePath" width="150" height="210">
+      <input type="file" (change)="uploadPhotoMainPhoto($event)">
+      <h4>Первый документ</h4>
+      <img [src]="FirstDocPath" width="150" height="210">
+      <input type="file" (change)="uploadFirstDoc($event)">
+      <h4>Второй документ</h4>
+      <img [src]="SecondDocPath" width="150" height="210">
+      <input type="file" (change)="uploadSecondDoc($event)">
+      <h4>Третий документ</h4>
+      <img [src]="ThirdDocPath" width="150" height="210">
+      <input type="file" (change)="uploadThirdDoc($event)">
+      <h4>Четвертый документ</h4>
+      <img [src]="FourthDocPath" width="150" height="210">
+      <input type="file" (change)="uploadFourthDoc($event)">
+      <h4> Информация о себе</h4>
+      <textarea class="form-control" aria-label="With textarea"  [(ngModel)]="TextAboutMe"></textarea>
+      <button class="btn btn-outline-secondary my-3" type="button" (click)="saveAboutMe()" >Save</button>
+    </div>
+
+  </ng-container>
+
 </div>
+
 

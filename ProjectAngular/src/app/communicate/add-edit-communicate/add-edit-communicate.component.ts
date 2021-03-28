@@ -15,12 +15,12 @@ export class AddEditCommunicateComponent implements OnInit {
   CommunicationName!: string;
 
   ngOnInit(): void {
-    this.CommunicationId = this.communicate.CommunicationId;
+    this.CommunicationId = this.communicate.Id;
     this.CommunicationName = this.communicate.CommunicationName;
   }
 
   addCommunication(){
-    var val = {CommunicationId: this.CommunicationId, CommunicationName: this.CommunicationName};
+    var val = {Id: this.CommunicationId, CommunicationName: this.CommunicationName};
 
     this.service.addCommunication(val).subscribe(res => {
       alert(res.toString());
@@ -28,8 +28,7 @@ export class AddEditCommunicateComponent implements OnInit {
   }
 
   updateCommunication(){
-    var val = {CommunicationId: this.CommunicationId, CommunicationName: this.CommunicationName};
-
+    var val = {Id: this.CommunicationId, CommunicationName: this.CommunicationName};
     this.service.updateCommunication(val).subscribe(res => {
       alert(res.toString());
     });

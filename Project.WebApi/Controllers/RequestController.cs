@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Project.WebApi.StaticModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Project.WebApi.Controllers
 {
@@ -12,6 +17,7 @@ namespace Project.WebApi.Controllers
     public class RequestController : Controller
     {
         private readonly ILogger<RequestController> _logger;
+
         List<Request> ItemList = new List<Request>();
 
         public RequestController(ILogger<RequestController> logger)
@@ -25,7 +31,7 @@ namespace Project.WebApi.Controllers
             ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Requests.OrderBy(x => x.Id).ToList();
+                ItemList = db.Requests.OrderBy(x => x.Name).ToList();
             }
 
             return new JsonResult(ItemList);
@@ -36,40 +42,86 @@ namespace Project.WebApi.Controllers
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                item.Id = db.Requests.Count() + 1;
+                item.Id = Guid.NewGuid();
                 db.Requests.Add(item);
                 db.SaveChanges();
             }
             return new JsonResult("Added Success!");
         }
 
+        [HttpPost]
+        [Route("mail")]
+        public JsonResult SendEmail(Request item)
+        {
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("school.rus.lit@gmail.com", "goodIDEA1489"),
+                EnableSsl = true
+            };
+            Random rnd = new Random();
+            string key = rnd.Next(0, 10).ToString() + rnd.Next(0, 10).ToString() + rnd.Next(0, 10).ToString() + rnd.Next(0, 10).ToString();
+            client.Send("school.rus.lit@gmail.com", item.Email.ToString(), "Подтверждение заявки",
+                "Введите данный код на сайте: " + key);
+            Auth.MailCode.Add(item.Email, key);
+            return new JsonResult("Email Sended");
+        }
+
+        struct jsonFile
+        {
+            public string mail { get; set; }
+            public string code { get; set; }
+
+        }
+
+        [HttpPost, Route("MailConfirm")]
+        public bool MailConfirm([FromBody] string value)
+        {
+            jsonFile val = JsonConvert.DeserializeObject<jsonFile>(value);
+            if (Auth.MailCode.TryGetValue(val.mail, out string mailcode))
+            {
+                if (val.code == mailcode)
+                {
+                    Auth.MailCode.Remove(val.mail);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
         [HttpPut]
         public JsonResult Update(Request item)
         {
-            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Requests.ToList();
-                for (int i = 0; i < ItemList.Count; i++)
+                var val = db.Requests.Where(x => x.Id == item.Id).FirstOrDefault();
+                if (val != null)
                 {
-                    if (ItemList[i].Id == item.Id)
-                    {
-                        ItemList[i].Name = item.Name;
-                        db.SaveChanges();
-                    }
+                    val.Communicationname = item.Communicationname;
+                    val.Coursename = item.Coursename;
+                    val.Email = item.Email;
+                    val.Mobilephone = item.Mobilephone;
+                    val.Name = item.Name;
+                    db.SaveChanges();
                 }
             }
-
             return new JsonResult("Update Success2");
         }
 
 
-        [HttpDelete]
-        public JsonResult Delete(Request item)
+        [HttpDelete("{id}")]
+        public JsonResult Delete(string id)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                db.Requests.Remove(item);
+                db.Requests.Remove(db.Requests.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault());
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success!!");

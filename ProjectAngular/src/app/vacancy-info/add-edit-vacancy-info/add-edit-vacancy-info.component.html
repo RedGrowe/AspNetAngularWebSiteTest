@@ -1,1 +1,14 @@
-<p>add-edit-vacancy-info works!</p>
+<div class="form-Group row">
+  <label class="col-sm-2 col-form-label">Вакансия</label>
+  <div class="col-sm-10">
+    <input type="text" classs="form-control" [(ngModel)]="VacancyName"
+           placeholder="Введите наименование вакансии">
+  </div>
+</div>
+
+<button (click)="addVacancy()" *ngIf="vacancy.Id == undefined" class="btn btn-primary">
+  Добавить
+</button>
+<button (click)="updateVacancy()" *ngIf="vacancy.Id!= undefined" class="btn btn-primary">
+  Обновить
+</button>

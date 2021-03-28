@@ -1,23 +1,22 @@
-<!--
-<div class="container">
+<!--<div class="container">
   <div class="form-Group row">
     <h3>Оставить заявку на обучение</h3>
     <label class="col-sm-2 col-form-label">Имя</label>
     <div class="col-sm-10">
-      <input type="text" classs="form-control" [(ngModel)]="Name"
+      <input type="text" class="form-control" [(ngModel)]="FirstName"
              placeholder="Введите имя">
     </div>
 
     <label class="col-sm-2 col-form-label ">Направление подготовки: </label>
     <div class="col-sm-10">
-      <select [(ngModel)]="CourseName">
+      <select [(ngModel)]="Name">
         <option *ngFor="let dataItem of CourseList">{{dataItem.Name}}</option>
       </select>
     </div>
 
     <label class="col-sm-2 col-form-label">Контактный телефон:</label>
     <div class="col-sm-10">
-      <input type="text" classs="form-control" [(ngModel)]="MobilePhone"
+      <input type="text" class="form-control" [(ngModel)]="MobilePhone"
              placeholder="Введите номер телефона">
     </div>
 
@@ -34,12 +33,12 @@
     </button>
 
   </div>
-</div>
--->
+</div>-->
+<div class="container-xxl">
 <div class="container">
   <div class="row">
     <div class="col">
-<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p  style="white-space:pre-wrap">{{SchoolAbout}}</p>
     </div>
   </div>
   <div class="row">
@@ -48,13 +47,13 @@
 </div>
 
 <div class="container">
-  <form>
+
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Имя</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="Name">
+      <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="FirstName">
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail2" class="form-label">Почтовый адрес</label>
+      <label for="exampleInputEmail2" class="form-label">Email</label>
       <input type="text" class="form-control" id="exampleInputEmail2" [(ngModel)]="Email">
     </div>
     <div class="mb-3">
@@ -64,7 +63,7 @@
 
     <div class="mb-3">
       <label> Направление подготовки</label>
-      <select class="form-select" aria-label="Default select example"  [(ngModel)]="CourseName">
+      <select class="form-select" aria-label="Default select example"  [(ngModel)]="Name">
         <option *ngFor="let dataItem of CourseList">{{dataItem.Name}}</option>
       </select>
     </div>
@@ -72,10 +71,27 @@
     <div class="mb-3">
       <label> Выберите удобный для вас способ связи </label>
       <select class="form-select" aria-label="Default select example"  [(ngModel)]="CommunicationName">
-        <option *ngFor="let dataItem2 of CommunicationList">{{dataItem2.CommunicationName}}</option>
+        <option *ngFor="let courseItem of CommunicationList">{{courseItem.CommunicationName}}</option>
       </select>
     </div>
 
-    <button type="submit" class="btn btn-outline-secondary" (click)="SendRequest()">Отправить заявку</button>
-  </form>
+
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-backdrop="static" data-keyboard="false" (click)="SendRequest()">
+      Отправить заявку
+    </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">На вашу почту отправлен пароль для подтверждения заявки</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-request [request]="request" ></app-add-edit-request>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

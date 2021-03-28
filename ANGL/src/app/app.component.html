@@ -1,0 +1,52 @@
+<div class="container-xxl">
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-auto text-center">
+        <h1> Онлайн-школа русского языка и литературы</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="d-grid gap-2 text-center">
+        <ng-container *ngIf="!IsAuth()">
+          <label>Логин</label>
+          <input type="text" [(ngModel)]="UserName">
+          <label>Пароль</label>
+          <input type="text" [(ngModel)]="Password">
+          <button class="btn btn-outline-secondary" type="button" (click)="LoginClick()">Войти</button>
+        </ng-container>
+        <buttom *ngIf="IsAuth()" routerLink="profile" class="btn btn-outline-secondary" type="button">Личный кабинет</buttom>
+        <button routerLink="school" class="btn btn-outline-secondary" type="button">О школе</button>
+        <button routerLink="course" class="btn btn-outline-secondary" type="button">Направления</button>
+        <button routerLink="price" class="btn btn-outline-secondary" type="button">Цены</button>
+        <button routerLink="vacancy" class="btn btn-outline-secondary" type="button">Вакансии</button>
+        <ng-container *ngIf="IsAuth()">
+          <button routerLink="edit" class="btn btn-outline-secondary" type="button">Редактирование</button>
+          <button class="btn btn-outline-secondary" type="button" (click)="LogoutClick()">Выйти</button>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="col-md-9 text-center">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+
+
+  <div class="row my-3">
+    <div class="col-md-auto">
+      Контакты:
+    </div>
+  </div>
+
+</div>

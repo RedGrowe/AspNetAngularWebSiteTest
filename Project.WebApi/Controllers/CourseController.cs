@@ -36,7 +36,7 @@ namespace Project.WebApi.Controllers
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                item.Id = db.Courses.Count() + 1;
+                item.Id = Guid.NewGuid();
                 db.Courses.Add(item);
                 db.SaveChanges();
             }
@@ -46,31 +46,27 @@ namespace Project.WebApi.Controllers
         [HttpPut]
         public JsonResult Update(Course item)
         {
-            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Courses.ToList();
-                for (int i = 0; i < ItemList.Count; i++)
+                var val = db.Courses.Where(x => x.Id == item.Id).FirstOrDefault();
+                if (val != null)
                 {
-                    if (ItemList[i].Id == item.Id)
-                    {
-                        ItemList[i].Name = item.Name;
-                        db.SaveChanges();
-                    }
+                    val.Name = item.Name;
+                    val.GroupNumber = item.GroupNumber;
+                    db.SaveChanges();
                 }
             }
-
             return new JsonResult("Update Success");
         }
 
 
         [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(string id)
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
                 ItemList = db.Courses.ToList();
-                db.Remove(ItemList.FirstOrDefault(x => x.Id == id));
+                db.Remove(db.Courses.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault());
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success!!");

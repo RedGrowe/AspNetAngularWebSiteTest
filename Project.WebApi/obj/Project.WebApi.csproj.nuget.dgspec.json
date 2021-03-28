@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\queer\\source\\repos\\Project4\\Project.WebApi\\Project.WebApi.csproj": {}
+    "E:\\TestProject\\Project\\Project.WebApi\\Project.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\queer\\source\\repos\\Project4\\Project.WebApi\\Project.WebApi.csproj": {
+    "E:\\TestProject\\Project\\Project.WebApi\\Project.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\queer\\source\\repos\\Project4\\Project.WebApi\\Project.WebApi.csproj",
+        "projectUniqueName": "E:\\TestProject\\Project\\Project.WebApi\\Project.WebApi.csproj",
         "projectName": "Project.WebApi",
-        "projectPath": "C:\\Users\\queer\\source\\repos\\Project4\\Project.WebApi\\Project.WebApi.csproj",
-        "packagesPath": "C:\\Users\\queer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\queer\\source\\repos\\Project4\\Project.WebApi\\obj\\",
+        "projectPath": "E:\\TestProject\\Project\\Project.WebApi\\Project.WebApi.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "E:\\TestProject\\Project\\Project.WebApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\queer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +43,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[10.1.1, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.10.1, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -98,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

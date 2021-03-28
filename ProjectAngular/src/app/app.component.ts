@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {SharedService} from './shared.service';
+import {AuthServiceService} from './auth-service.service';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +10,5 @@ import {SharedService} from './shared.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ProjectAngular';
-  constructor(private service: SharedService) {
-  }
-
-  reg(): boolean {
-    return this.service.registr;
-  }
+  title = 'sss';
 }

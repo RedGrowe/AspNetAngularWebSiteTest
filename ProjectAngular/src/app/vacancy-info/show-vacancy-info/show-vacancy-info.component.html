@@ -1,1 +1,71 @@
-<p>show-vacancy-info works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>{{SchoolAbout}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Откликнуться на вакансию</h3>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Фамилия</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="LastName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail2" class="form-label">Имя</label>
+    <input type="text" class="form-control" id="exampleInputEmail2" [(ngModel)]="Name">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail3" class="form-label">Отчество</label>
+    <input type="text" class="form-control" id="exampleInputEmail3" [(ngModel)]="MiddleName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail4" class="form-label">Email</label>
+    <input type="text" class="form-control" id="exampleInputEmail4" [(ngModel)]="Email">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail5" class="form-label">Номер телефона</label>
+    <input type="text" class="form-control" id="exampleInputEmail5" [(ngModel)]="MobilePhone">
+  </div>
+
+  <div class="mb-3">
+    <label> Вакансия</label>
+    <select class="form-select" aria-label="Default select example"  [(ngModel)]="VacancyName">
+      <option *ngFor="let dataItem of VacancyList">{{dataItem.VacancyName}}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label> Выберите удобный для вас способ связи </label>
+    <select class="form-select" aria-label="Default select example"  [(ngModel)]="CommunicationName">
+      <option *ngFor="let dataItem2 of CommunicationList">{{dataItem2.CommunicationName}}</option>
+    </select>
+  </div>
+
+
+  <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          data-backdrop="static" data-keyboard="false" (click)="SendRequest()">
+    Отправить заявку
+  </button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">На вашу почту отправлен пароль для подтверждения заявки</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-vacancy-request [vacancyRequest]="vacancyRequest" ></app-add-edit-vacancy-request>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

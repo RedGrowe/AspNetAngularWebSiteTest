@@ -27,10 +27,21 @@ namespace Project.WebApi.Controllers
             ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Roles.OrderBy(x => x.RoleId).ToList();
+                ItemList = db.Roles.OrderBy(x => x.Id).ToList();
             }
 
             return new JsonResult(ItemList);
+        }
+
+        [HttpPost, Route("GetRole")]
+        public JsonResult GetRole([FromBody] string value)
+        {
+            Role rl = new Role();
+            using (OnlineSchoolContext db = new OnlineSchoolContext())
+            {
+                rl = db.Roles.Where(x => x.Id == Guid.Parse(value)).FirstOrDefault();
+                return new JsonResult(rl);
+            }
         }
 
         [HttpPost]
@@ -38,7 +49,7 @@ namespace Project.WebApi.Controllers
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                item.RoleId = db.Roles.Count() + 1;
+                item.Id = Guid.NewGuid();
                 db.Roles.Add(item);
                 db.SaveChanges();
             }
@@ -48,20 +59,15 @@ namespace Project.WebApi.Controllers
         [HttpPut]
         public JsonResult Update(Role item)
         {
-            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Roles.ToList();
-                for (int i = 0; i < ItemList.Count; i++)
+                var val = db.Roles.Where(x => x.Id == item.Id).FirstOrDefault();
+                if (val != null)
                 {
-                    if (ItemList[i].RoleId == item.RoleId)
-                    {
-                        ItemList[i].RoleName = item.RoleName;
-                        db.SaveChanges();
-                    }
+                    val.Name = item.Name;
+                    db.SaveChanges();
                 }
             }
-
             return new JsonResult("Update Success");
         }
 
@@ -70,7 +76,6 @@ namespace Project.WebApi.Controllers
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                db.Roles.Remove(item);
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success");

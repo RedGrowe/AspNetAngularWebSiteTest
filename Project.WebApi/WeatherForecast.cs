@@ -8,7 +8,7 @@ namespace Project.WebApi
 
         public int TemperatureC { get; set; }
 
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.55856);
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5856);
 
         public string Summary { get; set; }
     }

@@ -25,7 +25,7 @@ namespace Project.WebApi.Controllers
             ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Communications.OrderBy(x => x.CommunicationId).ToList();
+                ItemList = db.Communications.OrderBy(x => x.CommunicationName).ToList();
             }
 
             return new JsonResult(ItemList);
@@ -36,7 +36,7 @@ namespace Project.WebApi.Controllers
         {
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                item.CommunicationId = db.Communications.Count() + 1;
+                item.Id = Guid.NewGuid();
                 db.Communications.Add(item);
                 db.SaveChanges();
             }
@@ -46,17 +46,13 @@ namespace Project.WebApi.Controllers
         [HttpPut]
         public JsonResult Update(Communication item)
         {
-            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Communications.ToList();
-                for (int i = 0; i < ItemList.Count; i++)
+                var value = db.Communications.Where(x => x.Id == item.Id).FirstOrDefault();
+                if (value != null)
                 {
-                    if (ItemList[i].CommunicationId == item.CommunicationId)
-                    {
-                        ItemList[i].CommunicationName = item.CommunicationName;
-                        db.SaveChanges();
-                    }
+                    value.CommunicationName = item.CommunicationName;
+                    db.SaveChanges();
                 }
             }
             return new JsonResult("Update Success");
@@ -64,13 +60,11 @@ namespace Project.WebApi.Controllers
 
 
         [HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(string id)
         {
-            ItemList.Clear();
             using (OnlineSchoolContext db = new OnlineSchoolContext())
             {
-                ItemList = db.Communications.ToList();
-                db.Communications.Remove(ItemList.FirstOrDefault(x => x.CommunicationId == id));
+                db.Communications.Remove(db.Communications.Where(x => x.Id == Guid.Parse(id)).FirstOrDefault());
                 db.SaveChanges();
             }
             return new JsonResult("Delete Success!!");

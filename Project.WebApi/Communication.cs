@@ -7,7 +7,7 @@ namespace Project.WebApi
 {
     public partial class Communication
     {
-        public int CommunicationId { get; set; }
+        public Guid Id { get; set; }
         public string CommunicationName { get; set; }
     }
 }

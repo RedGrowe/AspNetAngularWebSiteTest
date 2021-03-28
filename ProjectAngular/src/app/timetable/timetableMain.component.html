@@ -1,0 +1,65 @@
+<div>
+    <div style="width: 100%;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <div style="display: flex; align-items: center;">
+          <span >
+                        <button class="btn btn-primary btn-sm" (click)="minusWeek()" style="margin: 0 5px;">
+                            назад
+                        </button>
+                        <button class="btn btn-primary btn-sm" (click)="nowWeek()">
+                            СЕГОДНЯ
+                        </button>
+                        <button class="btn btn-primary btn-sm" (click)="plusWeek()" style="margin: 0 5px;">
+                            вперед
+                        </button>
+                    </span>
+        </div>
+      </div>
+      <div style ="float: right; align-items: center;" >
+        <span style =" margin-right: 10px;">
+                        <button
+                          class="btn btn-sm btn-primary" (click)="updateTimes()"><i class="fas fa-save"></i>Сохранить
+                        </button>
+        </span>
+      </div>
+    </div>
+    <div style="overflow: auto;">
+      <table #tableContext style="table-layout: auto;" class="table table-striped table-bordered my-table-hover table-sm">
+        <thead class="thead-light">
+        <tr>
+          <th >Часы</th>
+          <th *ngFor="let day of days">
+            {{day | date:'dd.MM.yy (EEEEEE)'}}
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let hour of hours">
+          <tr >
+            <td>
+              {{hour}}
+            </td>
+            <td *ngFor="let day of days" (click)="editWorkedTime(hour, day)" [ngStyle] = "colorRow(hour, day)">
+              <div *ngIf="getUserDateTime(hour, day) != null">
+                <div *ngIf="!getUserDateTime(hour, day).IsEdit">
+
+                  {{getUserDateTime(hour, day).Value}}
+
+                </div>
+                <div *ngIf="getUserDateTime(hour, day).IsEdit" >
+                  <input [(ngModel)]="getUserDateTime(hour, day).Value" name="Value" #Value="ngModel"
+                               [style]="{'width':'100px'}"
+                                (blur)="closeEditUserDateTime(hour, day)" autofocus/>
+
+                </div>
+
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+

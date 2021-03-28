@@ -23,7 +23,6 @@ export class AddEditCourseInfoComponent implements OnInit {
 
   addCourse(){
     var val = {Id: this.Id, Name: this.Name, GroupNumber: this.GroupNumber};
-
     this.service.addCourse(val).subscribe(res => {
       alert(res.toString());
     });
